@@ -1,0 +1,108 @@
+{% extends 'SProvider/design1.html' %}
+{% block researchblock %}
+
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
+
+
+		<style>
+			body {background-color:#000000;}
+			.container-fluid {padding:50px;}
+			.container{background-color:white;padding:50px;   }
+			#title{font-family: 'Fredoka One', cursive;
+}
+			.text-uppercase{
+			font-family: 'Righteous', cursive;
+
+			}
+			.tweettext{
+
+    border: 2px solid yellowgreen;
+    width: 1104px;
+    height: 442px;
+    overflow: scroll;
+    background-color:;
+}
+		.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.style4 {color: #FFFF00; font-weight: bold; }
+        .style5 {color: #FFFF00}
+        </style>
+
+	<body>
+	<div class="container-fluid">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-5">
+ 					<form role="form" method="POST" >
+						{% csrf_token %}
+						<fieldset>
+							<p class="text-uppercase pull-center style1">View All Flights with No Delay  !!! </p>
+                            <hr>
+                            <div class="tweettext">
+                                <table border="5" bordercolor="#FF00FF">
+                      <tr><td bgcolor="#FF0000"><span class="style4">Departure Country</span></td>
+                      <td bgcolor="#FF0000"><span class="style4">Departure Airport</span></td>
+                      <td bgcolor="#FF0000"><span class="style4">Flight Name</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Flight Number</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Date</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Departure Scheduled Time</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Pre Flight</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Expected Flight Delay</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Historical Flight Delay</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Flight Delay Prediction</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Arrival Country</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Arrival Airport</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Airport Delay Reason</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Air Route Delay Reason</span></td>
+                          <td bgcolor="#FF0000"><span class="style4">Other Reason(1=Yes,0=No) </span></td>
+
+                      </tr>
+                            {% for object in objs %}
+                      <tr>
+                                        <td style="color:red; font-size:20px; font-family:fantasy" ><div align="center">{{object.Departure_Country}}</div></td>
+                                        <td style="font-family:monospace; font-size:19px;  "><div align="center">{{object.Departure_Airport}}</div></td>
+                                        <td style="font-family:monospace; font-size:19px; "><div align="center">{{object.Flight_Name}}</div></td>
+                                        <td style="font-family:monospace; font-size:19px; "><div align="center">{{object.names}}</div></td>
+                                         <td style="font-family:monospace; font-size:19px; "><div align="center">{{object.Date}}</div></td>
+                                        <td style="font-family:monospace; font-size:19px; "><div align="center">{{object.Departure_Scheduled_Time}}</div></td>
+                                        <td   style="font-family:monospace; font-size:19px; "><div align="center">{{object.Pre_Flight}}</div></td>
+                                        <td  style="font-family:monospace; font-size:19px; "><div align="center">{{object.Expected_Delay}} mns</div></td>
+                                        <td  style="font-family:monospace; font-size:19px; "><div align="center">{{object.Historical_Flight_Delay}} mns</div></td>
+                                        <td bgcolor="#FF00FF" style="font-family:monospace; font-size:19px; "><div align="center">{{object.Total_Flight_Delay}} mns</div></td>
+                                        <td style="font-family:monospace; font-size:19px; "><div align="center">{{object.Arrival_Country}}</div></td>
+                                        <td  style="font-family:monospace; font-size:19px; "><div align="center">{{object.Arrival_Airport}}</div></td>
+                                        <td bgcolor="#FF0000" style="font-family:monospace; font-size:19px; "><div align="center">{{object.Airport_Delay_Reason}}</div></td>
+                                        <td style="font-family:monospace; font-size:19px; "><div align="center">{{object.Air_Route_Delay_Reason}}</div></td>
+                                        <td style="font-family:monospace; font-size:19px; "><div align="center">{{object.Other_Reason}}</div></td>
+
+                                  </tr>
+
+                                        {% endfor %}
+                      </table>
+
+                            </div>
+
+
+
+
+						</fieldset>
+					</form>
+				</div>
+
+				<div class="col-md-2">
+					<!-------null------>
+				</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    <tr>
